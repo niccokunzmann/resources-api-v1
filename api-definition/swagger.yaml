@@ -371,9 +371,9 @@ definitions:
     properties:
       self:
         type: "string"
+        example: "http://schul-cloud.org/resources/ids"
         description: "The url to the listing."
-        enum:
-        - "/resources/ids"
+        pattern: ".*/resources/ids"
   ResourceIdsResponse_data:
     required:
     - "id"
