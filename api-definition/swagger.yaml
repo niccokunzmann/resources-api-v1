@@ -364,7 +364,7 @@ definitions:
           \ id by the service. This includes everything you can put into the url path\
           \ without the \"/\". The characters are specified in the url standard as\
           \ \"segment\" https://www.w3.org/Addressing/URL/url-spec.txt page 14/15"
-        pattern: "([!*\"'(),+a-zA-Z0-9$-_@.&+\\-]|%[0-9a-f]{2})+"
+        pattern: "([!*\"'(),+a-zA-Z0-9$-_@.&+\\-]|%[0-9a-fA-F]{2})+"
   ResourceIdsResponse_links:
     required:
     - "self"
