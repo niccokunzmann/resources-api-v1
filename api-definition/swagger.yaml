@@ -357,6 +357,13 @@ definitions:
         $ref: "#/definitions/ResourceType"
       attributes:
         $ref: "#/definitions/Resource"
+      id:
+        type: "string"
+        example: "cornelsen-physics-1"
+        description: "The id of the object which should be used instead of a generated\
+          \ id by the service. The characters are specifiedin the url standard as\
+          \ \"segment\" https://www.w3.org/Addressing/URL/url-spec.txt page 14/15"
+        pattern: "([!*\"'(),+a-zA-Z0-9$-_@.&+\\-]|%[0-9a-f]{2})+"
   ResourceIdsResponse_links:
     required:
     - "self"
