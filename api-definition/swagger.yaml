@@ -224,22 +224,15 @@ definitions:
   Jsonapi:
     type: "object"
     required:
-    - "description"
-    - "name"
-    - "source"
+    - "version"
     properties:
-      name:
+      version:
         type: "string"
-        example: "test server"
-        description: "The name of the server."
-      source:
-        type: "string"
-        example: "https://github.com/schul-cloud/schul_cloud_resources_server_tests"
-        description: "The implementation of ther server, i.e. the repository."
-      description:
-        type: "string"
-        example: "This is a test server to use for continuous integration."
-        description: "A description of the server."
+        description: "The version of the jsonapi which is supported http://jsonapi.org/format/#document-jsonapi-object"
+        enum:
+        - "1.0"
+      meta:
+        $ref: "#/definitions/Jsonapi_meta"
     description: "an object describing the server’s implementation"
   ResourceResponse:
     type: "object"
@@ -323,6 +316,25 @@ definitions:
         description: "A human readable description on what caused the error and how\
           \ to remove it."
     description: "A JSONAPI error. http://jsonapi.org/format/#errors"
+  Jsonapi_meta:
+    required:
+    - "description"
+    - "name"
+    - "source"
+    properties:
+      name:
+        type: "string"
+        example: "test server"
+        description: "The name of the server."
+      source:
+        type: "string"
+        example: "https://github.com/schul-cloud/schul_cloud_resources_server_tests"
+        description: "The implementation of ther server, i.e. the repository."
+      description:
+        type: "string"
+        example: "This is a test server to use for continuous integration."
+        description: "A description of the server."
+    description: "Meta information about the server and the implementation."
   ResourceResponse_links:
     required:
     - "self"
@@ -362,9 +374,10 @@ definitions:
         example: "cornelsen-physics-1"
         description: "The id of the object which should be used instead of a generated\
           \ id by the service. This includes everything you can put into the url path\
-          \ without the \"/\". The characters are specified in the url standard as\
-          \ \"segment\" https://www.w3.org/Addressing/URL/url-spec.txt page 14/15"
-        pattern: "([!*\"'(),+a-zA-Z0-9$-_@.&+\\-]|%[0-9a-fA-F]{2})+"
+          \ without the \"/\" and \"%HH\" hexadecimal encoded characters. The characters\
+          \ are specified in the url standard as \"segment\" https://www.w3.org/Addressing/URL/url-spec.txt\
+          \ page 14/15"
+        pattern: "([!*\"'(),+a-zA-Z0-9$_@.&+\\-])+"
   ResourceIdsResponse_links:
     required:
     - "self"
